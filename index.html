@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cook Medical Workforce Analysis: Canton, IL (Peoria MSA)</title>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --panel:#f7f9fc;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#e2e8f0;
+      --accent:#2563eb;
+      --warn:#b45309;
+      --good:#15803d;
+      --soft:#f3f7ff;
+      --shadow: 0 1px 0 rgba(15,23,42,.03);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#ffffff 0%, #fbfcff 55%, #ffffff 100%);
+      color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+
+    header{
+      padding:22px 0 14px;
+      border-bottom:1px solid var(--line);
+      background:rgba(255,255,255,.92);
+      position:sticky; top:0; backdrop-filter: blur(6px);
+      z-index:10;
+    }
+    h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
+    .sub{color:var(--muted); line-height:1.5; font-size:13.5px}
+
+    .tagrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .tag{
+      border:1px solid var(--line);
+      color:var(--muted);
+      background:var(--panel);
+      padding:6px 10px; border-radius:999px; font-size:12px;
+    }
+
+    .nav{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .nav a{
+      font-size:12.5px;
+      color:var(--muted);
+      border:1px solid var(--line);
+      background:#fff;
+      padding:6px 10px;
+      border-radius:999px;
+    }
+    .nav a:hover{border-color:rgba(37,99,235,.35); color:var(--text); text-decoration:none}
+
+    main{padding:20px 0 44px}
+    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:14px}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px;
+      box-shadow: var(--shadow);
+    }
+    .kpi{grid-column:span 3}
+    .kpi h3{margin:0 0 8px; font-size:12px; color:var(--muted); font-weight:650; letter-spacing:.2px}
+    .kpi .val{font-size:22px; font-weight:800}
+    .kpi .note{margin-top:6px; font-size:12px; color:var(--muted); line-height:1.35}
+
+    .half{grid-column:span 6}
+    .full{grid-column:span 12}
+
+    h2{margin:0 0 10px; font-size:15px; letter-spacing:.2px}
+    p{margin:0; color:var(--muted); line-height:1.55; font-size:13.5px}
+    ul{margin:10px 0 0 18px; color:var(--muted); line-height:1.55; font-size:13.5px}
+    li{margin:6px 0}
+    .hr{height:1px;background:var(--line); margin:10px 0 14px}
+
+    .callout{
+      border-left:4px solid var(--accent);
+      padding:10px 12px;
+      background: var(--soft);
+      border-radius:12px;
+      color:var(--text);
+    }
+    .callout strong{color:var(--text)}
+
+    .cols{display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-top:10px}
+    .mini{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+    }
+    .mini h3{margin:0 0 8px; font-size:13px; color:var(--text)}
+
+    .badge{
+      display:inline-block;
+      font-size:12px;
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#ffffff;
+      color:var(--muted);
+      margin-right:8px;
+      margin-top:8px;
+    }
+    .badge.good{border-color:#bbf7d0; background:#f0fdf4; color:var(--good)}
+    .badge.warn{border-color:#fed7aa; background:#fff7ed; color:var(--warn)}
+
+    table{width:100%; border-collapse:collapse; font-size:13px}
+    th, td{padding:10px 10px; border-bottom:1px solid var(--line); vertical-align:top}
+    th{color:var(--muted); text-align:left; font-weight:700; background:#fbfdff}
+    .small{font-size:12px; color:var(--muted)}
+    .right{text-align:right}
+
+    .embedWrap{
+      border:1px solid var(--line);
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .ratio{
+      position:relative;
+      width:100%;
+      padding-top:56.25%;
+      background:#fff;
+    }
+    .ratio iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+    .embedBar{
+      display:flex;
+      gap:10px;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 12px;
+      background:var(--panel);
+      border-top:1px solid var(--line);
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12.5px;
+      padding:7px 10px;
+      border-radius:10px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{border-color:rgba(37,99,235,.35)}
+    .btn a{color:inherit; text-decoration:none}
+
+    .fallback{
+      display:none;
+      padding:12px;
+      background:#fff7ed;
+      border-top:1px solid #fed7aa;
+      color:#7c2d12;
+      font-size:12.5px;
+      line-height:1.45;
+    }
+
+    footer{
+      padding:22px 0 34px;
+      border-top:1px solid var(--line);
+      background:#ffffff;
+    }
+    .src ol{margin:10px 0 0 18px; color:var(--muted); line-height:1.65; font-size:13px}
+
+    #sources { scroll-margin-top: 110px; }
+
+    @media (max-width:980px){
+      .kpi{grid-column:span 6}
+      .half{grid-column:span 12}
+      .cols{grid-template-columns:1fr}
+      header{position:relative}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1>Canton, IL: Labor Market Diagnosis (Peoria MSA)</h1>
+
+    <div class="sub">
+      <strong>Objective:</strong> provide actionable insight on labor availability, wage competitiveness, and workforce risks for minimum-skills / hourly manufacturing roles using public and team-collected data.
+      <br/>
+      <strong>Labor market definition:</strong> Peoria, IL MSA for external labor market conditions supporting Cook’s Canton, IL location.
+      <br/>
+      <strong>Timing note:</strong> This diagnosis combines <em>structural</em> (OEWS wages, housing) + <em>cyclical</em> (unemployment) + <em>near-term</em> (postings) indicators; each section lists its period.
+    </div>
+
+    <div class="tagrow">
+      <span class="tag">Prepared for Stephanie L.</span>
+      <span class="tag">OEWS wage year: May 2024</span>
+      <span class="tag">Unemployment window: Oct 2024–Sep 2025</span>
+      <span class="tag">ACS housing estimates: 2020–2025</span>
+      <span class="tag">Postings snapshot: Mar 26, 2026</span>
+    </div>
+
+    <div class="nav" aria-label="Page navigation">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#summary">Executive Summary</a>
+      <a href="#benchmarks">Role Basket</a>
+      <a href="#housing">Housing</a>
+      <a href="#postings">Postings</a>
+      <a href="#competition">Competition</a>
+      <a href="#recs">Recommendations</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap grid">
+
+    <!-- POWERBI DASHBOARD -->
+    <div class="card full" id="dashboard">
+      <h2>Workforce Market Dashboard — Peoria MSA</h2>
+      <p class="small">
+        Interactive dashboard for executive review. Use slicers to inspect wages, supply, hiring pressure, housing affordability, and employer competition.
+      </p>
+      <div class="hr"></div>
+
+      <div class="embedWrap">
+        <div class="ratio">
+          <iframe
+            id="pbiFrame"
+            title="cook_workforce_peoria"
+            src="PEORIA_POWERBI_EMBED_URL"
+            frameborder="0"
+            allow="fullscreen"
+            allowfullscreen="true"
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <div class="embedBar">
+          <span class="small">
+            If the dashboard doesn’t load, your browser or network may be blocking third-party iframes. Use “Open in new tab.”
+          </span>
+
+          <span style="display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="btn" id="btnFullscreen" title="Request fullscreen for the embed">Fullscreen</span>
+            <span class="btn">
+              <a href="PEORIA_POWERBI_EMBED_URL" target="_blank" rel="noopener" title="Open the report in a new tab">
+                Open in new tab
+              </a>
+            </span>
+            <span class="btn" id="btnSources" title="Jump to methodology and sources">Method & sources</span>
+          </span>
+        </div>
+
+        <div class="fallback" id="embedFallback">
+          <strong>Embed blocked.</strong> If you’re viewing this page inside a restricted environment, the Power BI iframe may be disabled.
+          Use the direct report link instead.
+        </div>
+      </div>
+    </div>
+
+    <!-- KPI STRIP -->
+    <div class="card kpi">
+      <h3>Unemployment (12-mo avg)</h3>
+      <div class="val">4.48%</div>
+      <div class="note">Oct 2024–Sep 2025. Looser labor market vs prior MSAs</div>
+    </div>
+    
+    <div class="card kpi">
+      <h3>Production workforce depth</h3>
+      <div class="val">14,810</div>
+      <div class="note">May 2024 OEWS</div>
+    </div>
+    
+    <div class="card kpi">
+      <h3>Assembler concentration (LQ)</h3>
+      <div class="val">1.92</div>
+      <div class="note">Strong specialization</div>
+    </div>
+    
+    <div class="card kpi">
+      <h3>Rent gap vs. assembler</h3>
+      <div class="val">+$7.70</div>
+      <div class="note">Affordability advantage vs other MSAs</div>
+    </div>
+
+    <!-- EXEC SUMMARY -->
+    <div class="card full" id="summary">
+      <h2>Executive Summary (What the market is doing to Cook)</h2>
+      <div class="callout">
+        <p>
+          Peoria appears to be a <strong>labor-accessible, industrially specialized market</strong> for Cook’s Canton location. Unemployment is higher than Winston-Salem and Bloomington, assembler specialization is strong, and the rent affordability threshold sits materially below the assembler median wage. Together, those signals suggest a market with better near-term hiring flexibility and less housing-driven retention pressure than the other pilot MSAs.
+        </p>
+      </div>
+
+      <div class="callout">
+        <p>
+          Peoria represents a <strong>labor-accessible and affordability-favorable market</strong> for Cook’s Canton operations. 
+          Compared to Bloomington and Winston-Salem, higher unemployment and strong assembler specialization indicate a deeper and more recruitable production labor pool. 
+          Additionally, housing costs sit materially below entry-level wages, reducing a major retention constraint observed in other markets.
+        </p>
+      </div>
+      
+      <ul>
+        <li><strong>Primary advantage:</strong> Peoria combines labor availability with strong production specialization (LQ 1.92).</li>
+        <li><strong>Key constraint:</strong> hiring pressure remains concentrated in QA, machining, and supervisory roles.</li>
+        <li><strong>Strategic implication:</strong> Cook can likely recruit entry production labor efficiently, but must target technical roles with precision.</li>
+      </ul>
+    </div>
+
+    <!-- ROLE BASKET -->
+    <div class="card full" id="benchmarks">
+      <h2>Role-Basket Benchmarks (Peoria MSA, May 2024 OEWS)</h2>
+      <p class="small">
+        LQ &gt; 1 indicates the occupation is more concentrated locally than the national average.
+      </p>
+      <div class="hr"></div>
+      <table>
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th class="right">Employment</th>
+            <th class="right">P25</th>
+            <th class="right">Median</th>
+            <th class="right">P75</th>
+            <th class="right">LQ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Production (All)</td>
+            <td class="right">14,810</td>
+            <td class="right">$19.42</td>
+            <td class="right">$23.57</td>
+            <td class="right">$28.95</td>
+            <td class="right">1.58</td>
+          </tr>
+          <tr>
+            <td><strong>Assembler</strong></td>
+            <td class="right">2,990</td>
+            <td class="right">$19.42</td>
+            <td class="right">$22.43</td>
+            <td class="right">$24.53</td>
+            <td class="right"><strong>1.92</strong></td>
+          </tr>
+          <tr>
+            <td>Forklift</td>
+            <td class="right">2,820</td>
+            <td class="right">$16.93</td>
+            <td class="right">$18.66</td>
+            <td class="right">$21.91</td>
+            <td class="right">0.88</td>
+          </tr>
+          <tr>
+            <td>Warehouse Stockers/Fillers</td>
+            <td class="right">3,130</td>
+            <td class="right">$15.00</td>
+            <td class="right">$16.93</td>
+            <td class="right">$20.61</td>
+            <td class="right">1.05</td>
+          </tr>
+          <tr>
+            <td>Warehouse Vehicle Operators</td>
+            <td class="right">1,030</td>
+            <td class="right">$19.30</td>
+            <td class="right">$24.49</td>
+            <td class="right">$30.49</td>
+            <td class="right">1.19</td>
+          </tr>
+          <tr>
+            <td>QA/Inspection</td>
+            <td class="right">1,000</td>
+            <td class="right">$21.52</td>
+            <td class="right">$26.20</td>
+            <td class="right">$29.60</td>
+            <td class="right">1.58</td>
+          </tr>
+          <tr>
+            <td>Packers</td>
+            <td class="right">670</td>
+            <td class="right">$16.24</td>
+            <td class="right">$17.70</td>
+            <td class="right">$18.87</td>
+            <td class="right">1.03</td>
+          </tr>
+          <tr>
+            <td>Maintenance</td>
+            <td class="right">520</td>
+            <td class="right">$28.93</td>
+            <td class="right">$35.83</td>
+            <td class="right">$36.96</td>
+            <td class="right">1.16</td>
+          </tr>
+          <tr>
+            <td>Machinist</td>
+            <td class="right">480</td>
+            <td class="right">$20.26</td>
+            <td class="right">$24.24</td>
+            <td class="right">$29.12</td>
+            <td class="right">1.50</td>
+          </tr>
+          <tr>
+            <td>Setters, Operators, Tenders</td>
+            <td class="right">260</td>
+            <td class="right">$18.03</td>
+            <td class="right">$21.82</td>
+            <td class="right">$22.48</td>
+            <td class="right">1.41</td>
+          </tr>
+          <tr>
+            <td>Supervisor</td>
+            <td class="right">1,060</td>
+            <td class="right">$28.08</td>
+            <td class="right">$32.81</td>
+            <td class="right">$38.62</td>
+            <td class="right">1.44</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="hr"></div>
+      <ul>
+        <li><strong>Assembler positioning:</strong> $22.43 median sits well above the $14.73 affordability threshold → strong retention baseline.</li>
+        <li><strong>Technical premium curve:</strong> QA ($26.20), machinist ($24.24), and maintenance ($35.83) create a steep wage ladder.</li>
+        <li><strong>Market structure:</strong> high LQ across production roles indicates a deeply industrial labor base.</li>
+      </ul>
+    </div>
+
+    <!-- WAGE POSITIONING -->
+    <div class="card half" id="positioning">
+      <h2>Wage Positioning (Peoria)</h2>
+      <p class="small">
+        Peoria’s role basket indicates a relatively favorable entry-level wage position combined with stronger premiums in technical and supervisory occupations. This suggests Cook can likely hire entry production labor without extreme wage pressure, while still needing deliberate strategies for higher-skill roles.
+      </p>
+      <div class="hr"></div>
+      <ul>
+        <li><strong>Assembler median:</strong> $22.43/hr</li>
+        <li><strong>Production median:</strong> $23.57/hr</li>
+        <li><strong>QA/Inspection median:</strong> $26.20/hr</li>
+        <li><strong>Maintenance median:</strong> $35.83/hr</li>
+        <li><strong>Supervisor median:</strong> $32.81/hr</li>
+      </ul>
+      <div class="hr"></div>
+      <p class="small">
+        Strategic takeaway: Peoria appears more wage-favorable for entry production recruitment, but the technical premium curve remains steep.
+      </p>
+    </div>
+
+    <!-- HOUSING -->
+    <div class="card half" id="housing">
+      <h2>Housing Band Insights (Favorable Affordability Position)</h2>
+      <p class="small">
+        Housing in the Canton/Peoria market appears materially less constraining than in Bloomington or Winston-Salem. The rent affordability threshold sits below assembler median wage, reducing one of the key retention frictions seen in the other pilots.
+      </p>
+      <div class="hr"></div>
+
+      <div class="mini">
+        <h3>Affordability Method</h3>
+        <p class="small">
+          Assumptions: <strong>40 hrs/week</strong>, <strong>52 weeks/year</strong> (= 2,080 hrs), using the 30% and 35% gross income rules.  
+          Hourly wage = (Monthly housing cost × 12) ÷ (Rule × 2,080).
+        </p>
+      </div>
+
+      <div class="hr"></div>
+      <table>
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th class="right">Rent Wage</th>
+            <th class="right">Mortgage Wage</th>
+            <th>Interpretation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>30% Rule (single earner)</strong></td>
+            <td class="right">$14.73/hr</td>
+            <td class="right">$22.77/hr</td>
+            <td>Conservative affordability benchmark</td>
+          </tr>
+          <tr>
+            <td><strong>35% Rule (single earner)</strong></td>
+            <td class="right">$12.63/hr</td>
+            <td class="right">$19.52/hr</td>
+            <td>Higher burden tolerance</td>
+          </tr>
+          <tr>
+            <td><strong>Dual income (two earners)</strong></td>
+            <td class="right">$7.37/hr each</td>
+            <td class="right">$11.38/hr each</td>
+            <td>Shows how household composition changes affordability</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- POSTINGS -->
+        <div class="card full" id="postings">
+      <h2>Active Hiring Pressure (Postings snapshot)</h2>
+      <p class="small">
+        Snapshot date: <strong>Mar 26, 2026</strong>. Radius: <strong>20 miles</strong>. Window: listings within <strong>30 days</strong>.
+        Postings are not hires, but they provide a directional view of near-term competitive recruiting activity.
+      </p>
+      <div class="hr"></div>
+      <table>
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th class="right">Posting Count</th>
+            <th>Observed Pay Range</th>
+            <th>Top Employers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>QA/Inspection</strong></td>
+            <td class="right">23</td>
+            <td>$19–$32</td>
+            <td>SpartanX, Maui Jim, Actalent, Lozier Oil Company, American Red Cross</td>
+          </tr>
+          <tr>
+            <td><strong>Supervisor</strong></td>
+            <td class="right">21</td>
+            <td>$20–$33</td>
+            <td>Walmart, State of Illinois, Vonachen Group, Universal Logistics, Carle Health</td>
+          </tr>
+          <tr>
+            <td><strong>Machinist</strong></td>
+            <td class="right">18</td>
+            <td>$24–$35</td>
+            <td>Ingersoll Rand, Caterpillar Inc., Kroeschell Inc.</td>
+          </tr>
+          <tr>
+            <td><strong>Warehouse Stockers/Fillers</strong></td>
+            <td class="right">14</td>
+            <td>$16–$26</td>
+            <td>Ferguson Enterprises, Sherman's, Fastenal, HD Supply</td>
+          </tr>
+          <tr>
+            <td><strong>Production (All)</strong></td>
+            <td class="right">10</td>
+            <td>$15–$38</td>
+            <td>Kencor Ethnic Foods, ADM, Illinois Tool Works</td>
+          </tr>
+          <tr>
+            <td><strong>Forklift</strong></td>
+            <td class="right">9</td>
+            <td>$23–$27</td>
+            <td>Dayton Freight, Crown Equipment, Costco, DHL, Lowe’s</td>
+          </tr>
+          <tr>
+            <td><strong>Assembler</strong></td>
+            <td class="right">8</td>
+            <td>$20–$42</td>
+            <td>National Assemblers, Rheo Engineering, Altorfer CAT</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="hr"></div>
+      <div class="cols">
+        <div class="mini">
+          <h3>Observed demand profile</h3>
+          <ul>
+            <li><strong>QA/Inspection</strong> and <strong>Supervisor</strong> roles appear especially active.</li>
+            <li><strong>Machinist</strong> and warehouse-adjacent roles also show meaningful demand.</li>
+            <li>The market appears more concentrated in technical production roles than Winston-Salem’s broader competition mix.</li>
+          </ul>
+        </div>
+        <div class="mini">
+          <h3>Demand diagnosis</h3>
+          <ul>
+            <li>Hiring demand is <strong>concentrated in QA, supervisory, and machining roles</strong>.</li>
+            <li>Entry production roles show lower posting intensity relative to workforce size.</li>
+            <li>The market reflects <strong>targeted technical competition</strong>, not broad labor scarcity.</li>
+            <li>Cook’s constraint is likely <strong>role-specific hiring efficiency</strong>, not market-wide access.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPETITIVE LANDSCAPE -->
+    <div class="card full" id="competition">
+      <h2>Competitive Landscape (Med-Tech & Adjacent Employers)</h2>
+      <div class="callout">
+        <p>
+          The Canton/Peoria labor market appears less constrained by broad labor access and more shaped by competition for technically skilled production roles. For Cook, the implication is that employer differentiation should focus on skilled-role recruitment, advancement visibility, and stability rather than market-wide wage leadership.
+        </p>
+      </div>
+      <div class="hr"></div>
+      <ul>
+        <li><strong>Market structure:</strong> the production labor base is strong, but higher-value roles still appear contested.</li>
+        <li><strong>Strategic implication:</strong> Cook may be able to recruit entry roles more efficiently here than in Bloomington or Winston-Salem.</li>
+        <li><strong>Next layer:</strong> deepen benchmarking against med-tech and industrial competitors to identify where Cook can differentiate in technical hiring and long-term retention.</li>
+      </ul>
+    </div>
+
+    <!-- RECOMMENDATIONS -->
+    <div class="card full" id="recs">
+      <h2>Recruitment & Retention Recommendations (Canton / Peoria MSA)</h2>
+      <ul>
+        <li><strong>Exploit the favorable affordability position:</strong> entry production wages appear more sustainable relative to housing than in the prior pilot markets.</li>
+        <li><strong>Target technical bottlenecks directly:</strong> prioritize QA, machinist, maintenance, and supervisory pipelines rather than relying on broad-based recruitment messaging.</li>
+        <li><strong>Compete on skilled-role pathways:</strong> visible progression from entry production into QA, technical, or lead roles should strengthen retention.</li>
+        <li><strong>Use differentiated sourcing:</strong> technical roles likely need distinct channels and more active outreach than assembler hiring.</li>
+        <li><strong>Position Cook as a stable, long-term employer:</strong> stability and progression may outperform simple wage competition in this market.</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<footer id="sources">
+  <div class="wrap src">
+    <h2>Sources</h2>
+    <p class="small">
+      This page integrates BLS unemployment data, BLS OEWS wage data, U.S. Census housing indicators, and a team-collected postings snapshot using the same repeatable framework as Bloomington and Winston-Salem.
+    </p>
+
+    <ol>
+      <li>
+        <strong>BLS OEWS: Peoria, IL MSA (May 2024)</strong><br/>
+        <a href="https://data.bls.gov/oes/#/area/0037900" target="_blank" rel="noopener">
+          https://data.bls.gov/oes/#/area/0037900
+        </a>
+      </li>
+      <li>
+        <strong>BLS unemployment series: Peoria, IL MSA</strong><br/>
+        <a href="https://data.bls.gov/pdq/SurveyOutputServlet" target="_blank" rel="noopener">
+          https://data.bls.gov/pdq/SurveyOutputServlet
+        </a>
+      </li>
+      <li>
+        <strong>U.S. Census housing data: Canton, IL / ACS 2020–2025</strong><br/>
+        <a href="https://www.census.gov/quickfacts/fact/table/ellettsvilletownindiana,bloomingtoncityindiana,spencercountyindiana,winstonsalemcitynorthcarolina,cantoncityillinois,US/PST045226" target="_blank" rel="noopener">
+          https://www.census.gov/quickfacts/fact/table/ellettsvilletownindiana,bloomingtoncityindiana,spencercountyindiana,winstonsalemcitynorthcarolina,cantoncityillinois,US/PST045226
+        </a>
+      </li>
+      <li>
+        <strong>Job postings snapshot (20-mile radius; listings within 30 days; captured Mar 26, 2026)</strong><br/>
+        <span class="small">Insert your final traceable posting links here once exported from the Peoria dashboard or raw postings file.</span>
+      </li>
+    </ol>
+
+    <div class="hr"></div>
+    <p class="small">
+      Version 0.1 (Peoria draft). Next: finalize Power BI embed + integrate multi-market selector UI.
+    </p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    const frame = document.getElementById('pbiFrame');
+    const fallback = document.getElementById('embedFallback');
+    const btn = document.getElementById('btnFullscreen');
+    const btnSources = document.getElementById('btnSources');
+
+    btn.addEventListener('click', function(){
+      if (!frame) return;
+      const el = frame;
+      const req = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+      if (req) req.call(el);
+    });
+
+    btnSources.addEventListener('click', function(){
+      const target = document.getElementById('sources');
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    let loaded = false;
+    frame.addEventListener('load', function(){ loaded = true; });
+
+    setTimeout(function(){
+      if (!loaded){
+        fallback.style.display = "block";
+      }
+    }, 3500);
+  })();
+</script>
+
+</body>
+</html>
