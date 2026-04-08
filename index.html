@@ -190,7 +190,6 @@
       background:#ffffff;
     }
     .src ol{margin:10px 0 0 18px; color:var(--muted); line-height:1.65; font-size:13px}
-
     #sources { scroll-margin-top: 110px; }
 
     @media (max-width:980px){
@@ -219,7 +218,7 @@
       <span class="tag">Prepared for Stephanie L.</span>
       <span class="tag">OEWS wage year: May 2024</span>
       <span class="tag">Unemployment window: Oct 2024–Sep 2025</span>
-      <span class="tag">ACS housing estimates: 2020–2025</span>
+      <span class="tag">ACS housing estimates: 2020–2024</span>
       <span class="tag">Postings snapshot: Mar 26, 2026</span>
     </div>
 
@@ -227,6 +226,7 @@
       <a href="#dashboard">Dashboard</a>
       <a href="#summary">Executive Summary</a>
       <a href="#benchmarks">Role Basket</a>
+      <a href="#positioning">Positioning</a>
       <a href="#housing">Housing</a>
       <a href="#postings">Postings</a>
       <a href="#competition">Competition</a>
@@ -287,25 +287,25 @@
     <div class="card kpi">
       <h3>Unemployment (12-mo avg)</h3>
       <div class="val">4.48%</div>
-      <div class="note">Oct 2024–Sep 2025. Looser labor market vs prior MSAs</div>
+      <div class="note">Oct 2024–Sep 2025</div>
     </div>
-    
+
     <div class="card kpi">
       <h3>Production workforce depth</h3>
       <div class="val">14,810</div>
       <div class="note">May 2024 OEWS</div>
     </div>
-    
+
     <div class="card kpi">
       <h3>Assembler concentration (LQ)</h3>
       <div class="val">1.92</div>
-      <div class="note">Strong specialization</div>
+      <div class="note">May 2024 OEWS</div>
     </div>
-    
+
     <div class="card kpi">
       <h3>Rent gap vs. assembler</h3>
-      <div class="val">+$7.70</div>
-      <div class="note">Affordability advantage vs other MSAs</div>
+      <div class="val">+$7.70/hr</div>
+      <div class="note">30% rule; ACS 2020–2024</div>
     </div>
 
     <!-- EXEC SUMMARY -->
@@ -313,23 +313,26 @@
       <h2>Executive Summary (What the market is doing to Cook)</h2>
       <div class="callout">
         <p>
-          Peoria appears to be a <strong>labor-accessible, industrially specialized market</strong> for Cook’s Canton location. Unemployment is higher than Winston-Salem and Bloomington, assembler specialization is strong, and the rent affordability threshold sits materially below the assembler median wage. Together, those signals suggest a market with better near-term hiring flexibility and less housing-driven retention pressure than the other pilot MSAs.
+          Peoria appears to be a <strong>labor-accessible and affordability-favorable market</strong> for Cook’s Canton location. Compared with Bloomington and Winston-Salem, unemployment is higher, assembler specialization is stronger, and the rent affordability threshold sits materially below assembler median wage. Together, those signals suggest a market with better near-term hiring flexibility and less housing-driven retention pressure than the other pilot MSAs.
         </p>
       </div>
 
-      <div class="callout">
-        <p>
-          Peoria represents a <strong>labor-accessible and affordability-favorable market</strong> for Cook’s Canton operations. 
-          Compared to Bloomington and Winston-Salem, higher unemployment and strong assembler specialization indicate a deeper and more recruitable production labor pool. 
-          Additionally, housing costs sit materially below entry-level wages, reducing a major retention constraint observed in other markets.
-        </p>
-      </div>
-      
+      <div class="hr"></div>
+      <span class="badge good"><strong>Opportunity:</strong> stronger labor access than Bloomington and Winston-Salem</span>
+      <span class="badge good"><strong>Opportunity:</strong> assembler pay materially exceeds the rent threshold</span>
+      <span class="badge warn"><strong>Risk:</strong> demand remains concentrated in QA, machining, and supervisory roles</span>
+      <span class="badge.warn"><strong>Risk:</strong> technical and lead roles likely require targeted recruiting</span>
+
       <ul>
-        <li><strong>Primary advantage:</strong> Peoria combines labor availability with strong production specialization (LQ 1.92).</li>
-        <li><strong>Key constraint:</strong> hiring pressure remains concentrated in QA, machining, and supervisory roles.</li>
-        <li><strong>Strategic implication:</strong> Cook can likely recruit entry production labor efficiently, but must target technical roles with precision.</li>
+        <li><strong>Primary advantage:</strong> Peoria combines labor availability with strong production specialization (assembler LQ 1.92).</li>
+        <li><strong>Key constraint:</strong> hiring pressure appears concentrated in technical and supervisory roles rather than broad entry production demand.</li>
+        <li><strong>Strategic implication:</strong> Cook can likely recruit entry production labor efficiently here, but should target technical pipelines with much more precision.</li>
       </ul>
+
+      <div class="hr"></div>
+      <p class="small">
+        <strong>Strategic positioning:</strong> Bloomington is scarcity-driven, Winston-Salem is competition-driven, and Peoria appears <strong>access-driven with technical bottlenecks</strong>.
+      </p>
     </div>
 
     <!-- ROLE BASKET -->
@@ -344,8 +347,9 @@
           <tr>
             <th>Role</th>
             <th class="right">Employment</th>
-            <th class="right">P25</th>
+            <th class="right">Mean</th>
             <th class="right">Median</th>
+            <th class="right">P25</th>
             <th class="right">P75</th>
             <th class="right">LQ</th>
           </tr>
@@ -354,88 +358,99 @@
           <tr>
             <td>Production (All)</td>
             <td class="right">14,810</td>
-            <td class="right">$19.42</td>
+            <td class="right">$25.25</td>
             <td class="right">$23.57</td>
+            <td class="right">$19.42</td>
             <td class="right">$28.95</td>
             <td class="right">1.58</td>
           </tr>
           <tr>
             <td><strong>Assembler</strong></td>
             <td class="right">2,990</td>
-            <td class="right">$19.42</td>
+            <td class="right">$23.85</td>
             <td class="right">$22.43</td>
+            <td class="right">$19.42</td>
             <td class="right">$24.53</td>
             <td class="right"><strong>1.92</strong></td>
           </tr>
           <tr>
+            <td>Packers</td>
+            <td class="right">670</td>
+            <td class="right">$17.92</td>
+            <td class="right">$17.70</td>
+            <td class="right">$16.24</td>
+            <td class="right">$18.87</td>
+            <td class="right">1.03</td>
+          </tr>
+          <tr>
+            <td>QA/Inspection</td>
+            <td class="right">1,000</td>
+            <td class="right">$26.19</td>
+            <td class="right">$26.20</td>
+            <td class="right">$21.52</td>
+            <td class="right">$29.60</td>
+            <td class="right">1.58</td>
+          </tr>
+          <tr>
+            <td>Setters, Operators, Tenders</td>
+            <td class="right">260</td>
+            <td class="right">$21.61</td>
+            <td class="right">$21.82</td>
+            <td class="right">$18.03</td>
+            <td class="right">$22.48</td>
+            <td class="right">1.41</td>
+          </tr>
+          <tr>
             <td>Forklift</td>
             <td class="right">2,820</td>
-            <td class="right">$16.93</td>
+            <td class="right">$19.77</td>
             <td class="right">$18.66</td>
+            <td class="right">$16.93</td>
             <td class="right">$21.91</td>
             <td class="right">0.88</td>
           </tr>
           <tr>
             <td>Warehouse Stockers/Fillers</td>
             <td class="right">3,130</td>
-            <td class="right">$15.00</td>
+            <td class="right">$17.73</td>
             <td class="right">$16.93</td>
+            <td class="right">$15.00</td>
             <td class="right">$20.61</td>
             <td class="right">1.05</td>
           </tr>
           <tr>
             <td>Warehouse Vehicle Operators</td>
             <td class="right">1,030</td>
-            <td class="right">$19.30</td>
+            <td class="right">$24.59</td>
             <td class="right">$24.49</td>
+            <td class="right">$19.30</td>
             <td class="right">$30.49</td>
             <td class="right">1.19</td>
           </tr>
           <tr>
-            <td>QA/Inspection</td>
-            <td class="right">1,000</td>
-            <td class="right">$21.52</td>
-            <td class="right">$26.20</td>
-            <td class="right">$29.60</td>
-            <td class="right">1.58</td>
-          </tr>
-          <tr>
-            <td>Packers</td>
-            <td class="right">670</td>
-            <td class="right">$16.24</td>
-            <td class="right">$17.70</td>
-            <td class="right">$18.87</td>
-            <td class="right">1.03</td>
-          </tr>
-          <tr>
             <td>Maintenance</td>
             <td class="right">520</td>
-            <td class="right">$28.93</td>
+            <td class="right">$34.08</td>
             <td class="right">$35.83</td>
+            <td class="right">$28.93</td>
             <td class="right">$36.96</td>
             <td class="right">1.16</td>
           </tr>
           <tr>
             <td>Machinist</td>
             <td class="right">480</td>
-            <td class="right">$20.26</td>
+            <td class="right">$26.04</td>
             <td class="right">$24.24</td>
+            <td class="right">$20.26</td>
             <td class="right">$29.12</td>
             <td class="right">1.50</td>
           </tr>
           <tr>
-            <td>Setters, Operators, Tenders</td>
-            <td class="right">260</td>
-            <td class="right">$18.03</td>
-            <td class="right">$21.82</td>
-            <td class="right">$22.48</td>
-            <td class="right">1.41</td>
-          </tr>
-          <tr>
             <td>Supervisor</td>
             <td class="right">1,060</td>
-            <td class="right">$28.08</td>
+            <td class="right">$34.21</td>
             <td class="right">$32.81</td>
+            <td class="right">$28.08</td>
             <td class="right">$38.62</td>
             <td class="right">1.44</td>
           </tr>
@@ -444,9 +459,9 @@
 
       <div class="hr"></div>
       <ul>
-        <li><strong>Assembler positioning:</strong> $22.43 median sits well above the $14.73 affordability threshold → strong retention baseline.</li>
-        <li><strong>Technical premium curve:</strong> QA ($26.20), machinist ($24.24), and maintenance ($35.83) create a steep wage ladder.</li>
-        <li><strong>Market structure:</strong> high LQ across production roles indicates a deeply industrial labor base.</li>
+        <li><strong>Assembler positioning:</strong> $22.43 median sits well above the $14.73 affordability threshold, supporting a strong retention baseline.</li>
+        <li><strong>Technical premium curve:</strong> QA ($26.20), machinist ($24.24), maintenance ($35.83), and supervisor ($32.81) create a steep skilled-role wage ladder.</li>
+        <li><strong>Market structure:</strong> elevated LQs across production roles indicate a deeply industrial labor base.</li>
       </ul>
     </div>
 
@@ -454,19 +469,20 @@
     <div class="card half" id="positioning">
       <h2>Wage Positioning (Peoria)</h2>
       <p class="small">
-        Peoria’s role basket indicates a relatively favorable entry-level wage position combined with stronger premiums in technical and supervisory occupations. This suggests Cook can likely hire entry production labor without extreme wage pressure, while still needing deliberate strategies for higher-skill roles.
+        Peoria’s current role basket is more decision-useful than a historical wage-growth panel. The sharper question here is not how fast wages moved over three years, but whether today’s wage structure supports hiring and retention across the labor stack. On that basis, Peoria appears favorable for entry production recruitment but still demanding for higher-skill roles.
       </p>
       <div class="hr"></div>
       <ul>
         <li><strong>Assembler median:</strong> $22.43/hr</li>
         <li><strong>Production median:</strong> $23.57/hr</li>
         <li><strong>QA/Inspection median:</strong> $26.20/hr</li>
+        <li><strong>Machinist median:</strong> $24.24/hr</li>
         <li><strong>Maintenance median:</strong> $35.83/hr</li>
         <li><strong>Supervisor median:</strong> $32.81/hr</li>
       </ul>
       <div class="hr"></div>
       <p class="small">
-        Strategic takeaway: Peoria appears more wage-favorable for entry production recruitment, but the technical premium curve remains steep.
+        Strategic takeaway: Peoria looks wage-favorable for entry production hiring, but the premium curve for technical and leadership roles remains steep enough to justify role-specific recruiting strategies.
       </p>
     </div>
 
@@ -474,14 +490,14 @@
     <div class="card half" id="housing">
       <h2>Housing Band Insights (Favorable Affordability Position)</h2>
       <p class="small">
-        Housing in the Canton/Peoria market appears materially less constraining than in Bloomington or Winston-Salem. The rent affordability threshold sits below assembler median wage, reducing one of the key retention frictions seen in the other pilots.
+        Housing in the Canton/Peoria market appears materially less constraining than in Bloomington or Winston-Salem. The rent affordability threshold sits below assembler median wage, reducing one of the key retention frictions observed in the other pilots.
       </p>
       <div class="hr"></div>
 
       <div class="mini">
         <h3>Affordability Method</h3>
         <p class="small">
-          Assumptions: <strong>40 hrs/week</strong>, <strong>52 weeks/year</strong> (= 2,080 hrs), using the 30% and 35% gross income rules.  
+          Assumptions: <strong>40 hrs/week</strong>, <strong>52 weeks/year</strong> (= 2,080 hrs), using the 30% and 35% gross income rules.
           Hourly wage = (Monthly housing cost × 12) ÷ (Rule × 2,080).
         </p>
       </div>
@@ -517,10 +533,17 @@
           </tr>
         </tbody>
       </table>
+
+      <div class="hr"></div>
+      <ul>
+        <li><strong>Key signal:</strong> entry production wages exceed rent affordability thresholds by roughly $7.70/hr.</li>
+        <li><strong>Implication:</strong> housing is not a primary constraint on workforce stability in Peoria.</li>
+        <li><strong>Contrast:</strong> this is materially more favorable than Bloomington and Winston-Salem.</li>
+      </ul>
     </div>
 
     <!-- POSTINGS -->
-        <div class="card full" id="postings">
+    <div class="card full" id="postings">
       <h2>Active Hiring Pressure (Postings snapshot)</h2>
       <p class="small">
         Snapshot date: <strong>Mar 26, 2026</strong>. Radius: <strong>20 miles</strong>. Window: listings within <strong>30 days</strong>.
@@ -538,22 +561,40 @@
         </thead>
         <tbody>
           <tr>
+            <td><strong>Production (All)</strong></td>
+            <td class="right">10</td>
+            <td>$15–$38</td>
+            <td>Kencor Ethnic Foods, VetJobs, ADM, Illinois Tool Works</td>
+          </tr>
+          <tr>
+            <td><strong>Assembler</strong></td>
+            <td class="right">8</td>
+            <td>$20–$42</td>
+            <td>NPG Consultants, National Assemblers, Rheo Engineering, Altorfer Cat, Jtec Industries</td>
+          </tr>
+          <tr>
+            <td><strong>Packers</strong></td>
+            <td class="right">3</td>
+            <td>$16–$24</td>
+            <td>ServiceMaster Restore, Peoria Production Solutions Inc.</td>
+          </tr>
+          <tr>
             <td><strong>QA/Inspection</strong></td>
             <td class="right">23</td>
             <td>$19–$32</td>
             <td>SpartanX, Maui Jim, Actalent, Lozier Oil Company, American Red Cross</td>
           </tr>
           <tr>
-            <td><strong>Supervisor</strong></td>
-            <td class="right">21</td>
-            <td>$20–$33</td>
-            <td>Walmart, State of Illinois, Vonachen Group, Universal Logistics, Carle Health</td>
+            <td><strong>Setters, Operators, Tenders</strong></td>
+            <td class="right">5</td>
+            <td>$15–$33</td>
+            <td>Terminal Transport, Confidential, Nexstar Media Group</td>
           </tr>
           <tr>
-            <td><strong>Machinist</strong></td>
-            <td class="right">18</td>
-            <td>$24–$35</td>
-            <td>Ingersoll Rand, Caterpillar Inc., Kroeschell Inc.</td>
+            <td><strong>Forklift</strong></td>
+            <td class="right">9</td>
+            <td>$23–$27</td>
+            <td>Dayton Freight Lines, Crown Equipment Corporation, Costco Wholesale, DHL, Lowe's</td>
           </tr>
           <tr>
             <td><strong>Warehouse Stockers/Fillers</strong></td>
@@ -562,22 +603,28 @@
             <td>Ferguson Enterprises, Sherman's, Fastenal, HD Supply</td>
           </tr>
           <tr>
-            <td><strong>Production (All)</strong></td>
-            <td class="right">10</td>
-            <td>$15–$38</td>
-            <td>Kencor Ethnic Foods, ADM, Illinois Tool Works</td>
+            <td><strong>Warehouse Vehicle Operators</strong></td>
+            <td class="right">4</td>
+            <td>$16–$20</td>
+            <td>Garber Heating & Air Conditioning, Artisanal Beverages, Denver Mattress</td>
           </tr>
           <tr>
-            <td><strong>Forklift</strong></td>
-            <td class="right">9</td>
-            <td>$23–$27</td>
-            <td>Dayton Freight, Crown Equipment, Costco, DHL, Lowe’s</td>
+            <td><strong>Maintenance</strong></td>
+            <td class="right">5</td>
+            <td>$18–$25</td>
+            <td>Augustine Property Management, HP Preservation Service LLC, Camp Kearney South Side Mission</td>
           </tr>
           <tr>
-            <td><strong>Assembler</strong></td>
-            <td class="right">8</td>
-            <td>$20–$42</td>
-            <td>National Assemblers, Rheo Engineering, Altorfer CAT</td>
+            <td><strong>Machinist</strong></td>
+            <td class="right">18</td>
+            <td>$24–$35</td>
+            <td>Ingersoll Rand, Industrial Trade Services, Caterpillar Inc., Kroeschell Inc.</td>
+          </tr>
+          <tr>
+            <td><strong>Supervisor</strong></td>
+            <td class="right">21</td>
+            <td>$20–$33</td>
+            <td>Walmart, State of Illinois, Vonachen Group, Universal Logistics, Trinity Services Inc., NPG Consultants, Carle Health, Ross Stores</td>
           </tr>
         </tbody>
       </table>
@@ -587,18 +634,19 @@
         <div class="mini">
           <h3>Observed demand profile</h3>
           <ul>
-            <li><strong>QA/Inspection</strong> and <strong>Supervisor</strong> roles appear especially active.</li>
+            <li><strong>QA/Inspection</strong> and <strong>Supervisor</strong> roles are the most active categories in the observed snapshot.</li>
             <li><strong>Machinist</strong> and warehouse-adjacent roles also show meaningful demand.</li>
-            <li>The market appears more concentrated in technical production roles than Winston-Salem’s broader competition mix.</li>
+            <li>Entry production roles appear less intense than technical and supervisory demand.</li>
           </ul>
         </div>
+
         <div class="mini">
           <h3>Demand diagnosis</h3>
           <ul>
-            <li>Hiring demand is <strong>concentrated in QA, supervisory, and machining roles</strong>.</li>
+            <li>Hiring demand is concentrated in <strong>QA, supervisory, and machining roles</strong>.</li>
             <li>Entry production roles show lower posting intensity relative to workforce size.</li>
             <li>The market reflects <strong>targeted technical competition</strong>, not broad labor scarcity.</li>
-            <li>Cook’s constraint is likely <strong>role-specific hiring efficiency</strong>, not market-wide access.</li>
+            <li>Cook’s likely constraint is <strong>role-specific hiring efficiency</strong>, not market-wide access.</li>
           </ul>
         </div>
       </div>
@@ -656,14 +704,14 @@
         </a>
       </li>
       <li>
-        <strong>U.S. Census housing data: Canton, IL / ACS 2020–2025</strong><br/>
-        <a href="https://www.census.gov/quickfacts/fact/table/ellettsvilletownindiana,bloomingtoncityindiana,spencercountyindiana,winstonsalemcitynorthcarolina,cantoncityillinois,US/PST045226" target="_blank" rel="noopener">
-          https://www.census.gov/quickfacts/fact/table/ellettsvilletownindiana,bloomingtoncityindiana,spencercountyindiana,winstonsalemcitynorthcarolina,cantoncityillinois,US/PST045226
+        <strong>U.S. Census / affordability model inputs for Canton, IL</strong><br/>
+        <a href="https://www.census.gov/quickfacts/fact/table/cantoncityillinois,US/PST045224" target="_blank" rel="noopener">
+          https://www.census.gov/quickfacts/fact/table/cantoncityillinois,US/PST045224
         </a>
       </li>
       <li>
         <strong>Job postings snapshot (20-mile radius; listings within 30 days; captured Mar 26, 2026)</strong><br/>
-        <span class="small">Insert your final traceable posting links here once exported from the Peoria dashboard or raw postings file.</span>
+        <span class="small">Recorded manually from the observed postings file used in the Peoria dashboard build.</span>
       </li>
     </ol>
 
